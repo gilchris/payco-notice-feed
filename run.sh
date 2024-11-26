@@ -1,7 +1,6 @@
 #!/bin/bash
 
-#GIT_PATH=/usr/gilchris.github.io
-GIT_PATH=~/tmp
+GIT_PATH=/data/gilchris.github.io
 if [ -d "$GIT_PATH" ]; then
     cd $GIT_PATH
     git pull
@@ -13,15 +12,7 @@ OLD_FILE=$GIT_PATH/feeds/payco_developer_notice.xml
 NEW_FILE=$GIT_PATH/feeds/_payco_developer_notice.xml
 
 cd /usr/src/app
-node app.js > $NEW_FILE
-
-if diff "$OLD_FILE" "$NEW_FILE" >/dev/null; then
-    rm -f $NEW_FILE
-    exit 0
-fi
-
-rm -f $OLD_FILE
-mv $NEW_FILE $OLD_FILE
+node app.js
 
 cd $GIT_PATH
 git add feeds/payco_developer_notice.xml

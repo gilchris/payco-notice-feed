@@ -15,6 +15,7 @@ COPY . .
 
 # Git 설치
 RUN apt-get update && apt-get install -y git
+RUN git config --global --add safe.directory /home/ubuntu/data/gilchris.github.io
 
 # 애플리케이션 실행
 CMD ["/bin/bash", "run.sh"]
