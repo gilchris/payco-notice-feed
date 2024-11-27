@@ -1,6 +1,9 @@
 #!/bin/bash
 
-GIT_PATH=/data/gilchris.github.io
+if [ -z "$GIT_PATH" ]; then
+    GIT_PATH=/data/gilchris.github.io
+fi
+
 if [ -d "$GIT_PATH" ]; then
     cd $GIT_PATH
     git pull
@@ -8,13 +11,14 @@ else
     git clone https://github.com/gilchris/gilchris.github.io.git
 fi
 
-OLD_FILE=$GIT_PATH/feeds/payco_developer_notice.xml
-NEW_FILE=$GIT_PATH/feeds/_payco_developer_notice.xml
+JSON_FILE=feeds/payco_notices.json
+FEED_FILE=feeds/payco_notice_feed.xml
 
 cd /usr/src/app
 node app.js
 
 cd $GIT_PATH
-git add feeds/payco_developer_notice.xml
-git commit -m "Update feeds/payco_developer_notice.xml"
+git add $FEED_FILE
+git add $JSON_FILE
+git commit -m "Update payco notice feed"
 git push

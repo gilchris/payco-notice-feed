@@ -1,5 +1,5 @@
-# 베이스 이미지로 Node.js 18을 사용
-FROM node:18-bullseye
+# 베이스 이미지로 Node.js 20을 사용
+FROM node:20-bullseye
 
 # 작업 디렉토리 생성
 WORKDIR /usr/src/app
@@ -14,8 +14,9 @@ RUN npm install
 COPY . .
 
 # Git 설치
-RUN apt-get update && apt-get install -y git
-RUN git config --global --add safe.directory /home/ubuntu/data/gilchris.github.io
+RUN apt-get update && apt-get install -y git && \
+    mkdir -p /data/gilchris.github.io && \
+    git config --global --add safe.directory /data/gilchris.github.io
 
 # 애플리케이션 실행
 CMD ["/bin/bash", "run.sh"]

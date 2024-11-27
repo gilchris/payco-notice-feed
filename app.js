@@ -2,11 +2,12 @@ const axios = require("axios");
 const { JSDOM } = require("jsdom");
 const fs = require("fs");
 const path = require("path");
+require("dotenv").config();
 
 const BASE_URL = "https://developers.payco.com/cs";
-const DATA_DIR = path.join(process.env.GIT_PATH | __dirname, "data", "feeds");
-const JSON_FILE = path.join(DATA_DIR, "payco_notices.json");
-const ATOM_FILE = path.join(DATA_DIR, "payco_notice_feed.xml");
+const DATA_DIR = path.join(process.env.GIT_PATH || __dirname, "feeds");
+const JSON_FILE = path.join(DATA_DIR, process.env.JSON_FILE || "payco_notices.json");
+const ATOM_FILE = path.join(DATA_DIR, process.env.FEED_FILE || "payco_notice_feed.xml");
 
 // 디렉토리 확인 및 생성
 if (!fs.existsSync(DATA_DIR)) {
