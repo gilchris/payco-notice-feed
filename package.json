@@ -2,9 +2,9 @@
   "name": "payco-notice-feed",
   "version": "1.0.0",
   "description": "페이코 공지사항을 Atom feed로 변환",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "run-test": "extern GIT_PATH=/home/ubuntu/data/gilchris.github.io node app.js"
+    "run-test": "GIT_PATH=/home/ubuntu/data/gilchris.github.io bash run.sh"
   },
   "keywords": [],
   "author": "gilchris",
